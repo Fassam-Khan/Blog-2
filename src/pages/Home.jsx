@@ -5,6 +5,7 @@ import Card2 from '../components/Card2'
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase/config';
 import { doc } from 'firebase/firestore';
+import Hero from '../components/Hero';
 
 
 const Home = () => {
@@ -32,8 +33,8 @@ const Home = () => {
   return (
     <div>
       <AdminHeader/>
-        <h1>Hi i am home </h1>
-        <div className='grid md:grid-cols-3 grid-col-1 gap-2 px-4 mt-4'>
+        <Hero/>
+        <div className='columns-1 sm:columns-2 lg:columns-3 gap-4 mt-6 px-4'>
 
           {Loading? (
             <p>Loading...</p>

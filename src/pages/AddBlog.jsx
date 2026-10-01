@@ -26,7 +26,12 @@ const AddBlog = () => {
             await setDoc(doc(db, "Blogs", Blog.title), {
                 title:Blog.title,
                 description: Blog.description,
-                img_url: imgUrl,
+                img_url: imgUrl || "",
+                slug: Blog.title.toLowerCase()
+                .trim()
+                .replace(/[^\w\s-]/g, "")
+                .replace(/\s+/g, "-"),
+                
                 Author: User.uid
               });
 
@@ -76,6 +81,13 @@ const AddBlog = () => {
         try {
 
             const imgUrl = await uploadImage(Blog.file)
+            const createSlug = () => {
+                return title
+                  .toLowerCase()
+                  .trim()
+                  .replace(/[^\w\s-]/g, "")
+                  .replace(/\s+/g, "-");
+              };
 
 
 
